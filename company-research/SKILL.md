@@ -84,5 +84,5 @@ Save the final summarized research result as a markdown file in the `company-res
 - **Only include information confirmed through search.** Do not add guesses or generic content. Mark unverified items as "No information".
 - **Prioritize information with clear sources.** Utilize reliable sources such as the official homepage, Crunchbase, LinkedIn, Glassdoor, and engineering blogs.
 - **Prioritize the latest information.** If there is information from multiple points in time on the same topic, use the most recent one.
-- **Language policy:** If it's a Korean company, output in Korean; if it's a foreign company, also summarize in Korean, but keep proper nouns such as company names and technical terms in their original language.
+- **Language policy:** Summarize the output in the user's preferred language (the language they used to request the skill). Keep proper nouns such as company names and technical terms in their original language.
 - For companies with scarce information, like startups, summarize as much as possible within the scope of what can be found, and be honest about what information is missing.
