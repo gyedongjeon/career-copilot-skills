@@ -1,1 +1,41 @@
-# career-copilot-skills
+# Career Copilot Skills
+
+Welcome to the **Career Copilot Skills** repository! This project contains powerful AI agent skills designed to automate and assist you with your job search and company research activities. 
+
+By leveraging these skills, your AI assistant can autonomously browse job boards, analyze your personal resume, investigate corporate tech stacks, and generate beautifully formatted Markdown reports to accelerate your career advancement.
+
+---
+
+## 🛠 Available Skills
+
+### 1. 🏢 Company Research (`company-research`)
+A comprehensive intelligence skill that scours the web to build a detailed profile of any company or startup you are interested in.
+
+*   **What it does:** Extracts key information such as the company's core business, funding rounds, engineering tech stack, employee culture (Glassdoor/Blind), and recent news.
+*   **How to trigger:** Simply provide a company name or a job posting URL and say, *"Research this company"* or *"What can you tell me about [Company Name]?"*
+*   **Output:** The skill will automatically summarize its findings and save a structured markdown report into the `company-research-results/` directory.
+
+### 2. 🔍 Job Search (`job-search`)
+A highly personalized job-hunting assistant that parses your resume to find the most suitable, active job postings across various platforms (e.g., LinkedIn, Indeed, Startup Job Boards).
+
+*   **Initial Setup:** For the best experience, save your resume as a markdown file inside the `resumes/` folder (e.g., `resumes/John_Doe.md`). 
+*   **What it does:** The skill analyzes your core competencies, seniority, and location preferences from your resume. It then fetches active job postings and evaluates your suitability (highlighting match points and potential gaps) for each role.
+*   **How to trigger:** Say something like, *"Find backend jobs that fit my resume in Berlin,"* or *"Search the web for new job postings for me."*
+*   **Output:** A curated list of recommended jobs and their match evaluations will be saved in the `job-search-results/` directory as a daily digest.
+
+---
+
+## 🌍 Language Flexibility
+
+Both skills are built dynamically with multilingual support. The AI is instructed to summarize its findings in **your preferred language** (the language you used to trigger the skill) while retaining crucial proper nouns like technical terms and company names in their original formatting for maximum accuracy.
+
+## 📂 Project Structure Overview
+
+```text
+career-copilot-skills/
+├── company-research/          # Skill workflow for company research
+├── company-research-results/  # (Auto-generated) Saved company reports
+├── job-search/                # Skill workflow for job searching
+├── job-search-results/        # (Auto-generated) Saved job match digests
+└── resumes/                   # Directory to store your personal markdown resumes
+```

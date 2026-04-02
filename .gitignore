@@ -144,3 +144,5 @@ cython_debug/
 *.sqlite
 *.db
 company-research-results/
+job-search-results/
+resumes/
