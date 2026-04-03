@@ -30,11 +30,18 @@ A quick analysis tool that deciphers lengthy job descriptions and extracts exact
 *   **How to trigger:** Paste a URL for a job posting (like LinkedIn) and ask, *"Summarize the qualifications for this posting,"* or *"What do they need for this role?"*
 *   **Output:** Generates a neatly organized markdown breakdown of the requirements and a match analysis with your resume. The result is automatically saved into the `job-fit-analyzer-results/` directory.
 
+### 4. ✉️ Cover Letter Writer (`cover-letter`)
+A personalized cover letter writing assistant that crafts tailored application letters based on your resume and a specific job posting.
+
+*   **What it does:** Analyzes your resume and the target job posting, leverages any existing company research or job fit analysis results, and writes a compelling, position-specific cover letter. Strengths are highlighted, gaps are navigated with transferable skills, and company-specific details are woven in for differentiation.
+*   **How to trigger:** Say things like, *"Write me a cover letter for this job,"* *"Draft a motivation letter for this posting,"* or *"I want to apply here — can you write a cover letter?"*
+*   **Output:** A ready-to-send cover letter saved as `cover-letter-results/[YYYY-MM-DD]_[Name]_[Company]_cover_letter.md`, along with a brief writing notes summary in the chat.
+
 ---
 
 ## 🌍 Language Flexibility
 
-Both skills are built dynamically with multilingual support. The AI is instructed to summarize its findings in **your preferred language** (the language you used to trigger the skill) while retaining crucial proper nouns like technical terms and company names in their original formatting for maximum accuracy.
+All skills are built dynamically with multilingual support. The AI is instructed to summarize its findings in **your preferred language** (the language you used to trigger the skill) while retaining crucial proper nouns like technical terms and company names in their original formatting for maximum accuracy.
 
 ## 📂 Project Structure Overview
 
@@ -46,5 +53,7 @@ career-copilot-skills/
 ├── job-search-results/        # (Auto-generated) Saved job match digests
 ├── job-fit-analyzer/          # Skill workflow for extracting qualifications
 ├── job-fit-analyzer-results/  # (Auto-generated) Saved qualifications and match analyses
+├── cover-letter/              # Skill workflow for writing cover letters
+├── cover-letter-results/      # (Auto-generated) Saved cover letters
 └── resumes/                   # Directory to store your personal markdown resumes
 ```
