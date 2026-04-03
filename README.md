@@ -6,6 +6,14 @@ By leveraging these skills, your AI assistant can autonomously browse job boards
 
 ---
 
+## 🚀 Getting Started
+
+Professional job tools are only as good as the data they use. To enable full resume-aware automation (Job Search, Job Fit Analyzer, Cover Letter, and Resume Tailor), simply **save your resume as a markdown file** inside the `resumes/` directory (e.g., `resumes/John_Doe.md`). 
+
+The AI will automatically reference this file to provide personalized insights and tailored documents.
+
+---
+
 ## 🛠 Available Skills
 
 ### 1. 🏢 Company Research (`company-research`)
@@ -13,22 +21,21 @@ A comprehensive intelligence skill that scours the web to build a detailed profi
 
 *   **What it does:** Extracts key information such as the company's core business, funding rounds, engineering tech stack, employee culture (Glassdoor/Blind), and recent news.
 *   **How to trigger:** Simply provide a company name or a job posting URL and say, *"Research this company"* or *"What can you tell me about [Company Name]?"*
-*   **Output:** The skill will automatically summarize its findings and save a structured markdown report into the `company-research-results/` directory.
+*   **Output:** A complete company profile saved as `company-research-results/[Company_Name].md`, along with a key findings summary in the chat.
 
 ### 2. 🔍 Job Search (`job-search`)
-A highly personalized job-hunting assistant that parses your resume to find the most suitable, active job postings across various platforms (e.g., LinkedIn, Indeed, Startup Job Boards).
+A highly personalized job-hunting assistant that parses your resume to find the most suitable active job postings across platforms like LinkedIn, Indeed, and Startup Job Boards.
 
-*   **Initial Setup:** For the best experience, save your resume as a markdown file inside the `resumes/` folder (e.g., `resumes/John_Doe.md`). 
-*   **What it does:** The skill analyzes your core competencies, seniority, and location preferences from your resume. It then fetches active job postings and evaluates your suitability (highlighting match points and potential gaps) for each role.
+*   **What it does:** Analyzes your core competencies and preferences from your resume to fetch active job postings and evaluate your suitability, highlighting key match points and potential gaps for each role.
 *   **How to trigger:** Say something like, *"Find backend jobs that fit my resume in Berlin,"* or *"Search the web for new job postings for me."*
-*   **Output:** A curated list of recommended jobs and their match evaluations will be saved in the `job-search-results/` directory as a daily digest.
+*   **Output:** A curated list of recommended jobs and their match evaluations saved as `job-search-results/[YYYY-MM-DD]_search_results.md`, highlighting the most suitable roles for you.
 
 ### 3. 📝 Job Fit Analyzer (`job-fit-analyzer`)
 A quick analysis tool that deciphers lengthy job descriptions and extracts exactly what you need to know before applying.
 
 *   **What it does:** Scrapes job posting pages and cleanly recategorizes all requirements into "Minimum" and "Preferred" qualifications (Education, Experience, Tech Skills, etc.).
 *   **How to trigger:** Paste a URL for a job posting (like LinkedIn) and ask, *"Summarize the qualifications for this posting,"* or *"What do they need for this role?"*
-*   **Output:** Generates a neatly organized markdown breakdown of the requirements and a match analysis with your resume. The result is automatically saved into the `job-fit-analyzer-results/` directory.
+*   **Output:** A structured qualification analysis and gap report saved as `job-fit-analyzer-results/[YYYY-MM-DD]_[Name]_[Company]_qualifications.md`, summarizing your fit for the role.
 
 ### 4. ✉️ Cover Letter Writer (`cover-letter`)
 A personalized cover letter writing assistant that crafts tailored application letters based on your resume and a specific job posting.
