@@ -37,6 +37,13 @@ A personalized cover letter writing assistant that crafts tailored application l
 *   **How to trigger:** Say things like, *"Write me a cover letter for this job,"* *"Draft a motivation letter for this posting,"* or *"I want to apply here — can you write a cover letter?"*
 *   **Output:** A ready-to-send cover letter saved as `cover-letter-results/[YYYY-MM-DD]_[Name]_[Company]_cover_letter.md`, along with a brief writing notes summary in the chat.
 
+### 5. 🛠️ Resume Tailor (`resume-tailor`)
+A precision-tuning assistant that optimizes your base resume for a specific job posting by re-framing your experience through the lens of the target role.
+
+*   **What it does:** Analyzes the gaps and strengths between your resume and the job requirements to highlight relevant achievements and incorporate target keywords. It strategically re-structures bullet points, emphasizes transferable skills, and de-emphasizes less relevant areas—all while strictly adhering to the factual history in your base resume (no fabrication).
+*   **How to trigger:** Say things like, *"Tailor my resume for this position,"* *"Update my resume to fit this job,"* or *"Optimize my resume for this posting using [Resume_Name].md".*
+*   **Output:** A newly generated, job-specific markdown resume saved as `resume-tailor-results/[YYYY-MM-DD]_[Name]_[Company]_tailored_resume.md`, along with a detailed modification summary in the chat.
+
 ---
 
 ## 🌍 Language Flexibility
@@ -55,5 +62,7 @@ career-copilot-skills/
 ├── job-fit-analyzer-results/  # (Auto-generated) Saved qualifications and match analyses
 ├── cover-letter/              # Skill workflow for writing cover letters
 ├── cover-letter-results/      # (Auto-generated) Saved cover letters
+├── resume-tailor/             # Skill workflow for tailoring resumes
+├── resume-tailor-results/     # (Auto-generated) Saved tailored resumes
 └── resumes/                   # Directory to store your personal markdown resumes
 ```
