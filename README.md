@@ -23,6 +23,13 @@ A highly personalized job-hunting assistant that parses your resume to find the 
 *   **How to trigger:** Say something like, *"Find backend jobs that fit my resume in Berlin,"* or *"Search the web for new job postings for me."*
 *   **Output:** A curated list of recommended jobs and their match evaluations will be saved in the `job-search-results/` directory as a daily digest.
 
+### 3. 📝 Job Fit Analyzer (`job-fit-analyzer`)
+A quick analysis tool that deciphers lengthy job descriptions and extracts exactly what you need to know before applying.
+
+*   **What it does:** Scrapes job posting pages and cleanly recategorizes all requirements into "Minimum" and "Preferred" qualifications (Education, Experience, Tech Skills, etc.).
+*   **How to trigger:** Paste a URL for a job posting (like LinkedIn) and ask, *"Summarize the qualifications for this posting,"* or *"What do they need for this role?"*
+*   **Output:** Generates a neatly organized markdown breakdown of the requirements and a match analysis with your resume. The result is automatically saved into the `job-fit-analyzer-results/` directory.
+
 ---
 
 ## 🌍 Language Flexibility
@@ -37,5 +44,7 @@ career-copilot-skills/
 ├── company-research-results/  # (Auto-generated) Saved company reports
 ├── job-search/                # Skill workflow for job searching
 ├── job-search-results/        # (Auto-generated) Saved job match digests
+├── job-fit-analyzer/          # Skill workflow for extracting qualifications
+├── job-fit-analyzer-results/  # (Auto-generated) Saved qualifications and match analyses
 └── resumes/                   # Directory to store your personal markdown resumes
 ```

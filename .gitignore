@@ -145,4 +145,5 @@ cython_debug/
 *.db
 company-research-results/
 job-search-results/
+job-fit-analyzer-results/
 resumes/
