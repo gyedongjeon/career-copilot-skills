@@ -74,7 +74,7 @@ Use the structure below as a baseline, adjusting flexibly based on content:
 - Express enthusiasm for the opportunity to interview
 - Close with a thank-you
 
-**Length:** One A4 page or less (approximately 300–400 words for English letters)
+**Length:** Must be strictly concise, fitting easily on half of an A4 page (strictly under 200-250 words for English letters). Never write long, dense paragraphs. Be scannable, punchy, and direct.
 
 ### 4. Output
 
@@ -126,4 +126,5 @@ After the cover letter, output a brief **Writing Notes** section separately in t
 - **Match the posting's language**: Always write the cover letter in the language of the job posting, not the language the user used. If the user's language differs from the posting's language, append a full translation in the user's language at the end of the file. Keep technical terms (Python, AWS, REST API, etc.) in their original form in both versions.
 - **Preserve originals**: Always preserve original files. If a file with the same name already exists, append a time-based suffix (e.g., `_HHMMSS`) instead of overwriting.
 - **Company-specific**: Never leave the company name or position title as a placeholder like `[Company Name]`. Always fill them in specifically.
+- **Keep it brief**: Recruiters are busy. Never exceed 250 words. Write short, punchy paragraphs rather than dense blocks of text.
 - **Tone**: Professional yet genuine. Avoid both overly formal ("I humbly submit") and overly casual tones.
