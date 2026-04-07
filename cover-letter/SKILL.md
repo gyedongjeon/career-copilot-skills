@@ -78,8 +78,25 @@ Use the structure below as a baseline, adjusting flexibly based on content:
 
 ### 4. Output
 
-Save the cover letter as a markdown file:
+Save the cover letter as a markdown file with a frontmatter section.
+
 - **Save Path**: `cover-letter-results/[YYYY-MM-DD]_[Applicant_Name]_[Company_Name]_cover_letter.md`
+
+## Output Template
+
+```markdown
+---
+title: Cover Letter - [Applicant Name] ([Company Name])
+created: [YYYY-MM-DD]
+updated: [YYYY-MM-DD]
+category: cover-letter
+applicant: [Applicant Name]
+company: [Company Name]
+tags: [cover-letter, application]
+---
+
+[Follow cover letter structure]
+```
 
 **Language handling:**
 - Always write the cover letter in the **job posting's language** (e.g., English posting → English cover letter, German posting → German cover letter).

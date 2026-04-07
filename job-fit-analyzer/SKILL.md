@@ -41,9 +41,19 @@ Save the extracted qualifications AND the match analysis together into a single 
 
 ### 5. Output Format
 
-Follow this template:
+Follow this template, including a frontmatter section at the top:
 
 ```markdown
+---
+title: Job Fit Analysis - [Company Name] ([Position Name])
+created: [YYYY-MM-DD]
+updated: [YYYY-MM-DD]
+category: job-fit-analysis
+company: [Company Name]
+position: [Position Name]
+tags: [job-fit, analysis]
+---
+
 ## 📋 [Company Name] - [Position Name]
 **🔗 Link**: [Job Posting URL]
 
