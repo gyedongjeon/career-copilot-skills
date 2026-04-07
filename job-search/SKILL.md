@@ -76,13 +76,21 @@ Select 5-10 postings with "High" or "Medium" suitability.
 
 ### 5. Organize and Save Results
 
-Save the search results as a markdown file.
+Save the search results as a markdown file. Include frontmatter at the top. **If a file with the same name already exists, append a time-based suffix (e.g., `_HHMMSS`) to avoid overwriting.**
 
 **Save Path**: `job-search-results/[YYYY-MM-DD]_search_results.md`
 
 ## Output Template
 
 ```markdown
+---
+title: Job Search Results - [YYYY-MM-DD]
+created: [YYYY-MM-DD]
+updated: [YYYY-MM-DD]
+category: job-search
+tags: [job-search, postings]
+---
+
 # Job Posting Search Results
 
 **Search Date**: 2026-03-29

@@ -32,11 +32,19 @@ Classify and summarize into the categories below. If there is no information for
 
 ### 4. Save Results
 
-Save the final summarized research result as a markdown file in the `company-research-results/` folder (e.g., `company-research-results/[Company Name].md`). Create the folder if it does not exist.
+Save the final summarized research result as a markdown file in the `company-research-results/` folder (e.g., `company-research-results/[YYYY-MM-DD]_[Company Name].md`). Create the folder if it does not exist. Include frontmatter at the top of the file. **If a file with the same name already exists, append a time-based suffix (e.g., `[YYYY-MM-DD]_[Company Name]_143000.md` or `_HHMMSS`) to preserve the original.**
 
 ## Output Template
 
 ```markdown
+---
+title: [Company Name]
+created: [YYYY-MM-DD]
+updated: [YYYY-MM-DD]
+category: company-research
+tags: [company-research, [Industry]]
+---
+
 ## 🏢 [Company Name]
 
 ### 📌 Company Overview

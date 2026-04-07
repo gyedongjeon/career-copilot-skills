@@ -82,9 +82,26 @@ Maintain the original resume's structure as a baseline while applying the follow
 
 ### 5. Output
 
-Save the modified resume as a Markdown file:
+Save the modified resume as a Markdown file with a frontmatter section. **If a file with the same name already exists, append a time-based suffix (e.g., `_HHMMSS`) to preserve existing versions.**
+
 - **Filename**: `[YYYY-MM-DD]_[Applicant_Name]_[Company_Name]_tailored_resume.md`
 - **Output Path**: `resume-tailor-results/`
+
+## Output Template
+
+```markdown
+---
+title: Tailored Resume - [Applicant Name] ([Company Name])
+created: [YYYY-MM-DD]
+updated: [YYYY-MM-DD]
+category: resume-tailor
+applicant: [Applicant Name]
+company: [Company Name]
+tags: [resume, tailored]
+---
+
+[Follow original resume structure, but with modifications]
+```
 
 After the resume, output a brief **Modification Summary** separately in the chat (do not include in the file):
 
