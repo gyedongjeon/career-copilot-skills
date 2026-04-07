@@ -82,7 +82,7 @@ Maintain the original resume's structure as a baseline while applying the follow
 
 ### 5. Output
 
-Save the modified resume as a Markdown file with a frontmatter section.
+Save the modified resume as a Markdown file with a frontmatter section. **If a file with the same name already exists, append a time-based suffix (e.g., `_HHMMSS`) to preserve existing versions.**
 
 - **Filename**: `[YYYY-MM-DD]_[Applicant_Name]_[Company_Name]_tailored_resume.md`
 - **Output Path**: `resume-tailor-results/`

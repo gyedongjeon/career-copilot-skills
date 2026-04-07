@@ -35,7 +35,7 @@ If a resume is available (e.g., located in the `resumes/` folder), compare the e
 
 ### 4. Organize and Save Results
 
-Save the extracted qualifications AND the match analysis together into a single markdown file.
+Save the extracted qualifications AND the match analysis together into a single markdown file. **If a file with the same name already exists, append a time-based suffix (e.g., `_HHMMSS`) to preserve the original.**
 
 **Save Path**: `job-fit-analyzer-results/[YYYY-MM-DD]_[Applicant_Name]_[Company_Name]_qualifications.md`
 

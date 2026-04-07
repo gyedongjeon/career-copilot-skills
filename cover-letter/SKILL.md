@@ -124,6 +124,6 @@ After the cover letter, output a brief **Writing Notes** section separately in t
 - **No fabrication**: Do not write experience, skills, or achievements that are not in the resume. Do not arbitrarily add unconfirmed content, even with hedging phrases like "currently learning" or "interested in".
 - **No copy-pasting from resume**: Do not lift bullet points from the resume verbatim. A cover letter complements the resume — it does not repeat it.
 - **Match the posting's language**: Always write the cover letter in the language of the job posting, not the language the user used. If the user's language differs from the posting's language, append a full translation in the user's language at the end of the file. Keep technical terms (Python, AWS, REST API, etc.) in their original form in both versions.
-- **Preserve originals**: If a cover letter file already exists, ask the user for confirmation before overwriting.
+- **Preserve originals**: Always preserve original files. If a file with the same name already exists, append a time-based suffix (e.g., `_HHMMSS`) instead of overwriting.
 - **Company-specific**: Never leave the company name or position title as a placeholder like `[Company Name]`. Always fill them in specifically.
 - **Tone**: Professional yet genuine. Avoid both overly formal ("I humbly submit") and overly casual tones.
