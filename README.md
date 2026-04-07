@@ -21,7 +21,7 @@ A comprehensive intelligence skill that scours the web to build a detailed profi
 
 *   **What it does:** Extracts key information such as the company's core business, funding rounds, engineering tech stack, employee culture (Glassdoor/Blind), and recent news.
 *   **How to trigger:** Simply provide a company name or a job posting URL and say, *"Research this company"* or *"What can you tell me about [Company Name]?"*
-*   **Output:** A complete company profile saved as `company-research-results/[Company_Name].md`, along with a key findings summary in the chat.
+*   **Output:** A complete company profile saved as `company-research-results/[YYYY-MM-DD]_[Company_Name].md` (with an added time suffix if a file already exists), along with a key findings summary in the chat.
 
 ### 2. 🔍 Job Search (`job-search`)
 A highly personalized job-hunting assistant that parses your resume to find the most suitable active job postings across platforms like LinkedIn, Indeed, and Startup Job Boards.
