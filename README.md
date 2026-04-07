@@ -28,28 +28,28 @@ A highly personalized job-hunting assistant that parses your resume to find the 
 
 *   **What it does:** Analyzes your core competencies and preferences from your resume to fetch active job postings and evaluate your suitability, highlighting key match points and potential gaps for each role.
 *   **How to trigger:** Say something like, *"Find backend jobs that fit my resume in Berlin,"* or *"Search the web for new job postings for me."*
-*   **Output:** A curated list of recommended jobs and their match evaluations saved as `job-search-results/[YYYY-MM-DD]_search_results.md`, highlighting the most suitable roles for you.
+*   **Output:** A curated list of recommended jobs and their match evaluations saved as `job-search-results/[YYYY-MM-DD]_search_results.md` (with an added time suffix if a file already exists), highlighting the most suitable roles for you.
 
 ### 3. 📝 Job Fit Analyzer (`job-fit-analyzer`)
 A quick analysis tool that deciphers lengthy job descriptions and extracts exactly what you need to know before applying.
 
 *   **What it does:** Scrapes job posting pages and cleanly recategorizes all requirements into "Minimum" and "Preferred" qualifications (Education, Experience, Tech Skills, etc.).
 *   **How to trigger:** Paste a URL for a job posting (like LinkedIn) and ask, *"Summarize the qualifications for this posting,"* or *"What do they need for this role?"*
-*   **Output:** A structured qualification analysis and gap report saved as `job-fit-analyzer-results/[YYYY-MM-DD]_[Name]_[Company]_qualifications.md`, summarizing your fit for the role.
+*   **Output:** A structured qualification analysis and gap report saved as `job-fit-analyzer-results/[YYYY-MM-DD]_[Name]_[Company]_qualifications.md` (with an added time suffix if a file already exists), summarizing your fit for the role.
 
 ### 4. ✉️ Cover Letter Writer (`cover-letter`)
 A personalized cover letter writing assistant that crafts tailored application letters based on your resume and a specific job posting.
 
 *   **What it does:** Analyzes your resume and the target job posting, leverages any existing company research or job fit analysis results, and writes a compelling, position-specific cover letter. Strengths are highlighted, gaps are navigated with transferable skills, and company-specific details are woven in for differentiation.
 *   **How to trigger:** Say things like, *"Write me a cover letter for this job,"* *"Draft a motivation letter for this posting,"* or *"I want to apply here — can you write a cover letter?"*
-*   **Output:** A ready-to-send cover letter saved as `cover-letter-results/[YYYY-MM-DD]_[Name]_[Company]_cover_letter.md`, along with a brief writing notes summary in the chat.
+*   **Output:** A ready-to-send cover letter saved as `cover-letter-results/[YYYY-MM-DD]_[Name]_[Company]_cover_letter.md` (with an added time suffix if a file already exists), along with a brief writing notes summary in the chat.
 
 ### 5. 🛠️ Resume Tailor (`resume-tailor`)
 A precision-tuning assistant that optimizes your base resume for a specific job posting by re-framing your experience through the lens of the target role.
 
 *   **What it does:** Analyzes the gaps and strengths between your resume and the job requirements to highlight relevant achievements and incorporate target keywords. It strategically re-structures bullet points, emphasizes transferable skills, and de-emphasizes less relevant areas—all while strictly adhering to the factual history in your base resume (no fabrication).
 *   **How to trigger:** Say things like, *"Tailor my resume for this position,"* *"Update my resume to fit this job,"* or *"Optimize my resume for this posting using [Resume_Name].md".*
-*   **Output:** A newly generated, job-specific markdown resume saved as `resume-tailor-results/[YYYY-MM-DD]_[Name]_[Company]_tailored_resume.md`, along with a detailed modification summary in the chat.
+*   **Output:** A newly generated, job-specific markdown resume saved as `resume-tailor-results/[YYYY-MM-DD]_[Name]_[Company]_tailored_resume.md` (with an added time suffix if a file already exists), along with a detailed modification summary in the chat.
 
 ---
 
