@@ -26,12 +26,12 @@ A comprehensive intelligence skill that scours the web to build a detailed profi
 *   **How to trigger:** Simply provide a company name or a job posting URL and say, *"Research this company"* or *"What can you tell me about [Company Name]?"*
 *   **Output:** A complete company profile saved as `company-research-results/[YYYY-MM-DD]_[Company_Name].md`, along with a key findings summary in the chat.
 
-### 2. 🔍 Job Search (`job-search`)
-A highly personalized job-hunting assistant that parses your resume to find the most suitable active job postings across platforms like LinkedIn, Indeed, and Startup Job Boards.
+### 2. 🔍 Job Search EU (`job-search-eu`)
+A highly personalized job-hunting assistant for the European market that parses your resume to find the most suitable active job postings across EU-specific platforms (GermanTechJobs, Stepstone, Arbeitnow, Relocate.me) and global sites (LinkedIn, Indeed, DevJobsScanner).
 
-*   **What it does:** Analyzes your core competencies and preferences from your resume to fetch active job postings and evaluate your suitability, highlighting key match points and potential gaps for each role.
-*   **How to trigger:** Say something like, *"Find backend jobs that fit my resume in Berlin,"* or *"Search the web for new job postings for me."*
-*   **Output:** A curated list of recommended jobs and their match evaluations saved as `job-search-results/[YYYY-MM-DD]_search_results.md`, highlighting the most suitable roles for you.
+*   **What it does:** Extracts core competencies from your resume, dynamically builds search queries for region-appropriate job boards, and evaluates your suitability for each posting — highlighting match points and gaps.
+*   **How to trigger:** Say something like, *"Search for job postings in Europe,"* *"Find postings that fit my resume in Germany,"* or *"Are there any positions for me lately in London?"*
+*   **Output:** A curated list of recommended jobs and their match evaluations saved as `job-search-eu-results/[YYYY-MM-DD]_[Applicant_Name]_[Country_or_City]_search_results.md`, highlighting the most suitable roles for you.
 
 ### 3. 📝 Job Fit Analyzer (`job-fit-analyzer`)
 A quick analysis tool that deciphers lengthy job descriptions and extracts exactly what you need to know before applying.
@@ -66,8 +66,8 @@ All skills are built dynamically with multilingual support. The AI is instructed
 career-copilot-skills/
 ├── company-research/          # Skill workflow for company research
 ├── company-research-results/  # (Auto-generated) Saved company reports
-├── job-search/                # Skill workflow for job searching
-├── job-search-results/        # (Auto-generated) Saved job match digests
+├── job-search-eu/             # Skill workflow for EU job searching
+├── job-search-eu-results/     # (Auto-generated) Saved job match digests
 ├── job-fit-analyzer/          # Skill workflow for extracting qualifications
 ├── job-fit-analyzer-results/  # (Auto-generated) Saved qualifications and match analyses
 ├── cover-letter/              # Skill workflow for writing cover letters
