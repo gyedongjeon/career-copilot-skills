@@ -1,9 +1,9 @@
 ---
-name: job-search
-description: A skill that searches the web for the latest suitable job postings based on a resume and summarizes the results. Triggered when the user asks "Search for job postings", "Find postings that fit my resume", "Are there any positions for me lately?", "Look up Python jobs in Berlin", "Search backend jobs on LinkedIn", or "Dig up some job postings". It integrates searches across multiple sites even if a specific site is not designated, and focuses on a specified site if one is provided. Use this skill in all situations where exploring job postings is needed during a job search, career change, or employment preparation.
+name: job-search-eu
+description: Searches the web for the latest suitable job postings in Europe based on a resume and summarizes the results. Integrates searches across multiple EU job sites and general platforms. Triggered by requests like "Search for job postings in Europe", "Find postings that fit my resume in Germany", "Are there any positions for me lately in London?", or "Search backend jobs on LinkedIn for Europe".
 ---
 
-# Job Search
+# Job Search EU
 
 Analyzes the resume to extract core competencies and technical keywords, searches the web for the latest suitable job postings, and summarizes the results.
 
@@ -29,40 +29,30 @@ If the user specifies additional conditions (location, skills, role, specific si
 
 ### 3. Web Search
 
-Utilize `WebSearch` and `WebFetch` to look for job postings using two methods.
+Use `WebSearch` as the primary method. `WebFetch` is only used when the user specifies a particular site.
 
-**Method 1: Direct Exploration of Job Sites**
+Use the variables below (derived from Step 2) to build search queries:
+- `{primary_skill}` — top skill (e.g., Python, Java, Go)
+- `{secondary_skill}` — second skill (e.g., Django, Spring, Kubernetes)
+- `{job_level}` — seniority (e.g., Senior, Lead)
+- `{job_type}` — role keyword (e.g., Backend Engineer, Data Scientist)
+- `{city}` — target city (e.g., Berlin, Amsterdam, London)
 
-Directly visit the search pages of major job boards via `WebFetch` based on the skills/roles/location from the resume. Dynamically construct the search URL for each site tailored to the extracted keywords:
+**Web Search Queries**
 
-- **GermanTechJobs**: `https://germantechjobs.de/jobs/Python/Berlin`
-- **Arbeitnow**: `https://www.arbeitnow.com/jobs?search=python+backend&location=berlin`
-- **Relocate.me**: `https://relocate.me/international-jobs/python`
-- **Indeed**: `https://de.indeed.com/jobs?q=python+backend+engineer&l=Berlin`
-- **LinkedIn**: `https://www.linkedin.com/jobs/search/?keywords=python+backend&location=Berlin` (may have login walls)
-- **Stepstone**: `https://www.stepstone.de/jobs/python-backend-engineer/in-berlin`
-- **DevJobsScanner**: `https://www.devjobsscanner.com/django-jobs-in-berlin/`
+Fire ALL queries simultaneously in a single parallel batch:
+- `"{job_level} {primary_skill} {job_type}" jobs {city} {current_year}`
+- `"{primary_skill} {secondary_skill}" "{job_type}" hiring {city}`
+- `site:linkedin.com/jobs "{primary_skill}" "{job_type}" {city}`
 
-Dynamically construct the search query portion of the site URL according to the keywords extracted from the resume. If a site is inaccessible, move on to the next.
-
-**Method 2: Utilizing Web Search Engines**
-
-Use `WebSearch` to conduct supplementary Google searches:
-- `"Senior Python Backend Engineer" jobs Berlin 2026`
-- `site:greenhouse.io "Python" "Backend" Berlin`
-- `site:ashbyhq.com Python Backend Berlin`
-- `"Python Django" "Backend Engineer" hiring Berlin`
+If initial search results are lacking, modify the query and retry **at most once**.
 
 **If the user specifies a particular site:**
-- Prioritize visiting that site directly (`WebFetch`), and perform a supplementary `site:` search.
-- Example: "Find it on LinkedIn" → Visit LinkedIn search URL directly + search `site:linkedin.com/jobs`
+- Visit that site directly via `WebFetch` with a dynamically constructed search URL, and perform a supplementary `site:` search via `WebSearch`.
+- Example: "Find it on LinkedIn" → `WebFetch` LinkedIn search URL + `WebSearch` `site:linkedin.com/jobs`
 
-**Search Tips:**
-- Use both methods in parallel to gather as many candidates as possible, then filter by suitability.
-- Combine tech keywords in various ways (Python + Django, Python + Backend, Python + API, etc.).
-- Include the current year in the search query to prioritize recent postings.
-- If initial search results are lacking, modify the query and try again.
-- From the search results, use `WebFetch` to retrieve the actual job posting pages and check the details.
+**Detail page visits:**
+- Only visit a posting's detail page via `WebFetch` when the search result lacks key information (company, title, or tech stack). Skip detail page visits for postings where this information is already clear.
 
 ### 4. Suitability Judgment and Filtering
 
@@ -72,30 +62,35 @@ Evaluate suitability by comparing the found postings against the resume:
 - **Medium**: Some skills match, but there is a gap in domain or specific requirements.
 - **Low**: Very few matching aspects → Exclude from results.
 
-Select 5-10 postings with "High" or "Medium" suitability.
+Select up to 5 postings with "High" or "Medium" suitability.
 
 ### 5. Organize and Save Results
 
 Save the search results as a markdown file. Include frontmatter at the top. **If a file with the same name already exists, append a time-based suffix (e.g., `_HHMMSS`) to avoid overwriting.**
 
-**Save Path**: `job-search-results/[YYYY-MM-DD]_search_results.md`
+**Save Path**: `job-search-eu-results/[YYYY-MM-DD]_[Applicant_Name]_[Country_or_City]_search_results.md`
+
+Use the most specific location scope requested by the user:
+- City specified → city name (e.g., `Berlin`)
+- Country specified → country name (e.g., `Germany`)
+- Broad region or no specific location → `Europe`
 
 ## Output Template
 
 ```markdown
 ---
-title: Job Search Results - [YYYY-MM-DD]
+title: Job Search Results - [Applicant Name] [Country or City] [YYYY-MM-DD]
 created: [YYYY-MM-DD]
 updated: [YYYY-MM-DD]
-category: job-search
+category: job-search-eu
 tags: [job-search, postings]
 ---
 
 # Job Posting Search Results
 
-**Search Date**: 2026-03-29
-**Search Criteria**: Python, Django, Backend Engineer, Berlin
-**Search Sources**: LinkedIn, Indeed, Stepstone, Glassdoor
+**Search Date**: [YYYY-MM-DD]
+**Search Criteria**: [core skills], [job type], [city]
+**Search Sources**: [list of sites actually searched]
 
 ---
 
@@ -132,4 +127,5 @@ tags: [job-search, postings]
 - **Prioritize recent postings.** If possible, exclude older postings (more than 3 months old).
 - **Be conservative with suitability judgments.** Base judgments on clear matches found within the resume, and do not force the inclusion of irrelevant postings.
 - **Be honest if search results are lacking.** If there are fewer than 5 postings, advise: "You may find more results by broadening the search scope or adjusting keywords."
+- **Deduplicate postings.** If the same position at the same company appears on multiple platforms, keep only the most informative or official source (prefer the company's own career page over aggregators). Judge duplicates by matching company name + position title.
 - **Language Policy**: Summarize the output in the user's preferred language (the language they used to request the skill). Keep proper nouns like company names, position names, and technical terms in their original language.
