@@ -118,7 +118,7 @@ Use the structure below as a baseline, adjusting flexibly based on content:
 
 Save the cover letter as a markdown file with a frontmatter section.
 
-- **Save Path**: `cover-letter-results/[YYYY-MM-DD]_[Applicant_Name]_[Company_Name]_cover_letter.md`
+- **Save Path**: `results/cover-letter/[YYYY-MM-DD]_[Applicant_Name]_[Company_Name]_cover_letter.md`
 - The main draft file may include the cover letter, Korean translation when required, and review metadata.
 - In the main draft file, include the confirmed applicant contact block and researched company address block before the letter body so the user can review them.
 - In the main draft file, put the source directly next to the company address line. This makes cross-checking easy without collecting unnecessary company contact details.
@@ -130,7 +130,7 @@ Save the cover letter as a markdown file with a frontmatter section.
 - Do not include company phone, company email, or contact page fields in the main draft unless the user explicitly asks for them.
 - Do not include source citations in the English-only submission copy or PDF unless the user explicitly asks for them.
 - Also save a separate English-only submission copy that is easy to convert to PDF.
-- **English Submission Save Path**: `cover-letter-results/[YYYY-MM-DD]_[Applicant_Name]_[Company_Name]_cover_letter_submission_en.md`
+- **English Submission Save Path**: `results/cover-letter/[YYYY-MM-DD]_[Applicant_Name]_[Company_Name]_cover_letter_submission_en.md`
 - The English submission copy must contain only:
   - The English cover letter
   - No frontmatter
@@ -152,7 +152,7 @@ Save the cover letter as a markdown file with a frontmatter section.
   - Keep the letter compact enough for one page.
   - Use the applicant-confirmed English level when available; otherwise use the default B1-B2 readability rules.
 - Always attempt to create a PDF version from the English submission copy.
-- **PDF Save Path**: `cover-letter-results/[YYYY-MM-DD]_[Applicant_Name]_[Company_Name]_cover_letter_submission_en.pdf`
+- **PDF Save Path**: `results/cover-letter/[YYYY-MM-DD]_[Applicant_Name]_[Company_Name]_cover_letter_submission_en.pdf`
 - If PDF conversion fails because no local converter is available, say so in the final response and provide the English submission markdown path.
 
 ### 5. PDF Conversion Workflow
@@ -187,12 +187,11 @@ After creating the English submission markdown file, create a PDF using the firs
   - When generating HTML, use a dedicated `.signature-space` block between `Sincerely,` and the applicant name.
 - Use simple one-page styling:
   - A4 page size
-  - readable body font size around 10.5-11.5pt
-  - professional cover-letter font, preferably `Aptos`, `Calibri`, `Arial`, `Helvetica Neue`, `Helvetica`, or `Times New Roman`
-  - on macOS, prefer `Aptos`, `Helvetica Neue`, or `Times New Roman` if available
-  - if using a serif style, use `Times New Roman` or `Georgia`
-  - if using a sans-serif style, use `Aptos`, `Calibri`, `Arial`, or `Helvetica Neue`
-  - use the same font family consistently throughout the PDF
+  - readable body font size around 11-11.5pt
+  - **default to a serif font: `"Times New Roman", Times, Georgia, serif`**. A serif face reads like a printed letter and matches the resume PDF produced by the `resume-tailor` skill, so the resume, cover letter, and any references page look like one set
+  - use a sans-serif font (`Aptos`, `Calibri`, `Arial`, `Helvetica Neue`) only if the user explicitly asks for it
+  - use the same font family consistently throughout the PDF; the subject line may be bold but stays in the same family
+  - links (e.g., a GitHub example) should be visible but plain: blue text, no underline
   - make the applicant name and company name in the address blocks bold, but do not enlarge them heavily
   - style the application subject line, e.g. `Application for Software Engineer, Python`, slightly larger than body text
   - subject line should be around 12-13pt, bold, with modest spacing before and after
@@ -217,13 +216,13 @@ When generating HTML/CSS for PDF conversion, explicitly set the font family, for
 
 ```css
 body {
-  font-family: "Aptos", "Calibri", "Helvetica Neue", Arial, sans-serif;
-  font-size: 11pt;
+  font-family: "Times New Roman", Times, Georgia, serif;
+  font-size: 11.5pt;
   line-height: 1.35;
 }
 
 .application-subject {
-  font-size: 12.5pt;
+  font-size: 13pt;
   font-weight: 700;
   margin-top: 22px;
   margin-bottom: 14px;
@@ -231,6 +230,11 @@ body {
 
 .signature-space {
   height: 44px;
+}
+
+a {
+  color: #0645ad;
+  text-decoration: none;
 }
 ```
 
