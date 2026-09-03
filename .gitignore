@@ -135,6 +135,7 @@ cython_debug/
 # IDEs
 .vscode/
 .idea/
+.claude/settings.local.json
 *.swp
 *.swo
 *~
@@ -143,9 +144,5 @@ cython_debug/
 # Project specific
 *.sqlite
 *.db
-company-research-results/
-job-search-eu-results/
-job-fit-analyzer-results/
-cover-letter-results/
-resume-tailor-results/
+results/
 resumes/
