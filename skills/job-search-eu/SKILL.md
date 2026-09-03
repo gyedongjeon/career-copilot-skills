@@ -111,7 +111,7 @@ Select up to 5 postings with "High" or "Medium" suitability.
 
 Save the search results as a markdown file. Include frontmatter at the top. **If a file with the same name already exists, append a time-based suffix (e.g., `_HHMMSS`) to avoid overwriting.**
 
-**Save Path**: `job-search-eu-results/[YYYY-MM-DD]_[Applicant_Name]_[Country_or_City]_search_results.md`
+**Save Path**: `results/job-search-eu/[YYYY-MM-DD]_[Applicant_Name]_[Country_or_City]_search_results.md`
 
 Use the most specific location scope requested by the user:
 - City specified → city name (e.g., `Berlin`)

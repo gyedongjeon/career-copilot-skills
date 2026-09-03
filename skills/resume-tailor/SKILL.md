@@ -106,7 +106,7 @@ Maintain the original resume's structure as a baseline while applying the follow
 Create two Markdown files: one working draft for internal review metadata and one final resume output for submission. **If a file with the same name already exists, append a time-based suffix (e.g., `_HHMMSS`) to preserve existing versions.**
 
 **Working Draft File**
-- **Save Path**: `resume-tailor-results/[YYYY-MM-DD]_[Applicant_Name]_[Company_Name]_tailored_resume.md`
+- **Save Path**: `results/resume-tailor/[YYYY-MM-DD]_[Applicant_Name]_[Company_Name]_tailored_resume.md`
 - This file may include:
   - YAML frontmatter
   - the tailored resume
@@ -115,7 +115,7 @@ Create two Markdown files: one working draft for internal review metadata and on
 
 **Final Resume Output File**
 - Always save a separate submission-ready resume Markdown file.
-- **Resume Output Save Path**: `resume-tailor-results/[YYYY-MM-DD]_[Applicant_Name]_[Company_Name]_tailored_resume_output_en.md`
+- **Resume Output Save Path**: `results/resume-tailor/[YYYY-MM-DD]_[Applicant_Name]_[Company_Name]_tailored_resume_output_en.md`
 - The final resume output file must contain only:
   - The tailored resume in the output language
   - No YAML frontmatter
@@ -130,10 +130,10 @@ Create two Markdown files: one working draft for internal review metadata and on
 
 **PDF Output**
 - Always attempt to create a PDF version from the final resume output file.
-- **PDF Save Path**: `resume-tailor-results/[YYYY-MM-DD]_[Applicant_Name]_[Company_Name]_tailored_resume_output_en.pdf`
+- **PDF Save Path**: `results/resume-tailor/[YYYY-MM-DD]_[Applicant_Name]_[Company_Name]_tailored_resume_output_en.pdf`
 - Match the PDF suffix to the final resume output language (e.g., `_output_de.pdf` for a German output file).
 - If PDF conversion fails because no local converter is available, say so in the final response and provide the final resume output Markdown path.
-- Do not keep intermediate HTML or CSS files in `resume-tailor-results/` after the PDF is created. Temporary HTML/CSS files may be used during conversion, but delete them before finishing unless the user explicitly asks to keep them.
+- Do not keep intermediate HTML or CSS files in `results/resume-tailor/` after the PDF is created. Temporary HTML/CSS files may be used during conversion, but delete them before finishing unless the user explicitly asks to keep them.
 - Final saved artifacts should normally be only:
   - the working draft Markdown
   - the final resume output Markdown
@@ -396,6 +396,6 @@ After generating the files, output a brief **Modification Summary** separately i
 - **Minimize Deletion**: Do not delete entire roles or projects; only adjust their weight.
 - **Language Alignment**: Always write the resume in the language of the job posting (e.g., English posting → English resume). Maintain technical terms in their original form. If the user's language is different, translate the Modification Summary printed in the chat to the user's language.
 - **Preserve Originals**: Always preserve original files. If a file with the same name already exists, append a time-based suffix (e.g., `_HHMMSS`) instead of overwriting.
-- **Specific Output Path**: Store results in the `resume-tailor-results/` directory.
+- **Specific Output Path**: Store results in the `results/resume-tailor/` directory.
 - **Submission-Ready Output**: Always create a separate final resume output Markdown file and always attempt PDF conversion from that file. Never include frontmatter, summaries, analysis, source citations, or writing notes in the final resume output file or PDF.
 - **Page Budget Compliance**: Adjust formatting, margins, and content length to guarantee the resume fits exactly within the page budget (1 or 2 pages) and does not spill orphan lines onto a new page.
