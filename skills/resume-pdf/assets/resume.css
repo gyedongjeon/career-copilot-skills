@@ -1,0 +1,110 @@
+/* Resume PDF stylesheet.
+   All sizes are relative to the body font-size, so `--base` in md_to_pdf.py
+   scales the whole document with a single knob. */
+
+@page { size: A4; margin: 13mm 13mm 12mm 13mm; }
+
+body {
+  font-family: "Charter", Georgia, "Times New Roman", serif;
+  font-size: 9.6pt;          /* overridden by --base */
+  line-height: 1.45;
+  color: #1c1c1c;
+  margin: 0;
+}
+strong { font-weight: 700; color: #000; }
+em { color: #444; }
+a { color: #1a4f7a; text-decoration: none; }
+
+/* ---------- Header ---------- */
+.hdr { border-bottom: 0.23em solid #1a3a52; padding-bottom: 0.62em; margin-bottom: 1.05em; }
+.hdr h1 {
+  font-family: "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 2.4em; font-weight: 600; letter-spacing: -0.012em;
+  margin: 0 0 0.09em 0; color: #10283a;
+}
+.role {
+  font-family: "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 1.125em; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: #3d6b8a; margin-bottom: 0.46em;
+}
+.role strong { font-weight: 500; color: inherit; }
+.contact { font-size: 1em; color: #3f4c54; line-height: 1.55; }
+.contact .sep { color: #a9b6be; padding: 0 0.1em; }
+
+/* ---------- Section headings ---------- */
+h2 {
+  font-family: "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 1.04em; font-weight: 600; letter-spacing: 0.16em;
+  text-transform: uppercase; color: #1a3a52;
+  border-bottom: 0.06em solid #b9c6cf;
+  padding-bottom: 0.24em; margin: 0.8em 0 0.5em 0;
+  page-break-after: avoid;
+}
+
+/* ---------- Job headings ---------- */
+h3.job {
+  font-family: "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 1.08em; font-weight: 600; color: #10283a;
+  margin: 0.72em 0 0.1em 0; page-break-after: avoid;
+}
+h3.job .ti { font-weight: 500; color: #2f4c60; }
+h3.job .ti::before { content: " · "; color: #9aa8b2; font-weight: 400; }
+h3.job .meta {
+  display: block; font-family: "Charter", Georgia, serif;
+  font-size: 0.9em; font-weight: 400; font-style: italic;
+  color: #5a6b76; margin-top: 0.15em;
+}
+h3.job .meta .loc::before { content: " · "; font-style: normal; }
+h2 + h3.job { margin-top: 0.4em; }
+
+/* ---------- Body text & lists ---------- */
+p { margin: 0.31em 0 0.42em 0; }
+h3.job + p { margin-top: 0.52em; }
+
+ul { margin: 0.31em 0 0.42em 0; padding-left: 0; list-style: none; }
+li { position: relative; padding-left: 1.15em; margin: 0.29em 0; }
+li.leaf { orphans: 1; widows: 1; }
+li::before {
+  content: "\2022"; position: absolute; left: 0.2em; top: 0;
+  color: #6f8a9c; font-size: 1.04em; line-height: 1.5;
+}
+li > ul { margin: 0.26em 0 0.31em 0; }
+li > ul > li { padding-left: 1.04em; margin: 0.26em 0; }
+li > ul > li::before { content: "\2013"; color: #9aa8b2; left: 0.1em; top: 0; font-size: 1.04em; line-height: 1.5; }
+
+/* ---------- Tech-stack footer line ---------- */
+li.stack, p.stack {
+  padding-left: 0; margin-top: 0.34em; font-size: 0.9em;
+  font-style: italic; color: #5a6b76;
+  border-top: 0.045em solid #e0e6ea; padding-top: 0.4em;
+}
+li.stack::before { content: none; }
+li.stack em, p.stack em { color: inherit; }
+li.stack strong, p.stack strong { font-weight: 400; color: inherit; }
+
+/* ---------- Label/value grid (skills) ---------- */
+.grid { margin: 0.52em 0 0.31em 0; }
+.grow { display: flex; margin: 0.29em 0; page-break-inside: avoid; }
+.grow .k {
+  flex: 0 0 11.3em;
+  font-family: "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 0.96em; font-weight: 600; color: #1a3a52;
+  letter-spacing: 0.02em; padding-top: 0.1em;
+}
+.grow .v { flex: 1; }
+
+/* ---------- Two-column tail sections ---------- */
+.cols { display: flex; gap: 2.3em; page-break-inside: avoid; }
+.cols .col { flex: 1; }
+.cols h2 { margin-top: 0.8em; }
+
+/* ---------- Inline run (languages) ---------- */
+.inline-run { margin: 0.52em 0 0.21em 0; }
+.inline-run .item { white-space: nowrap; }
+.inline-run .k {
+  font-family: "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
+  font-size: 0.96em; font-weight: 600; color: #1a3a52; letter-spacing: 0.02em;
+}
+.inline-run .k::after { content: ":"; }
+.inline-run .v { margin-left: 0.3em; }
+.inline-run .dot { color: #a9b6be; padding: 0 0.62em; }
