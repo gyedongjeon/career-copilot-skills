@@ -54,6 +54,14 @@ A precision-tuning assistant that optimizes your base resume for a specific job 
 *   **How to trigger:** Say things like, *"Tailor my resume for this position,"* *"Update my resume to fit this job,"* or *"Optimize my resume for this posting using [Resume_Name].md".*
 *   **Output:** A newly generated, job-specific markdown resume saved as `results/resume-tailor/[YYYY-MM-DD]_[Name]_[Company]_tailored_resume.md`, along with a detailed modification summary in the chat.
 
+### 6. 📄 Resume PDF (`resume-pdf`)
+A rendering skill that turns any markdown resume in this repository into a print-ready, ATS-friendly A4 PDF.
+
+*   **What it does:** Converts a markdown resume (your base resume or a tailored one) into a typographically clean PDF — aligned skill tables, side-by-side certifications and education, and an automatic size fit so the document lands on the page count you want without a stray trailing page.
+*   **How to trigger:** Say things like, *"Convert my resume to PDF,"* *"Export this resume as a PDF,"* or *"I need a PDF version to attach to this application."*
+*   **Output:** A PDF saved next to the source markdown (e.g. `resumes/[Name].pdf`), with the page count and any layout adjustments reported in the chat.
+*   **Requires:** `pandoc`, `weasyprint`, and `beautifulsoup4` (see the skill's `SKILL.md`).
+
 ---
 
 ## 🌍 Language Flexibility
@@ -69,12 +77,13 @@ career-copilot-skills/
 │   ├── job-search-eu/         # Skill workflow for EU job searching
 │   ├── job-fit-analyzer/      # Skill workflow for extracting qualifications
 │   ├── cover-letter/          # Skill workflow for writing cover letters
-│   └── resume-tailor/         # Skill workflow for tailoring resumes
-├── results/                   # (Auto-generated) All skill outputs, one folder per skill
+│   ├── resume-tailor/         # Skill workflow for tailoring resumes
+│   └── resume-pdf/            # Skill workflow + script for markdown → PDF rendering
+├── results/                   # (Auto-generated, gitignored) All skill outputs, one folder per skill
 │   ├── company-research/      # Saved company reports
 │   ├── job-search-eu/         # Saved job match digests
 │   ├── job-fit-analyzer/      # Saved qualifications and match analyses
 │   ├── cover-letter/          # Saved cover letters
 │   └── resume-tailor/         # Saved tailored resumes
-└── resumes/                   # Directory to store your personal markdown resumes
+└── resumes/                   # (Gitignored) Your personal markdown resumes; rendered PDFs land here too
 ```
