@@ -5,7 +5,7 @@ description: A skill that converts a Markdown resume into a print-ready, ATS-fri
 
 # Resume PDF
 
-Renders a Markdown resume to a two-column-tail, A4 PDF that stays readable in print and
+Renders a Markdown resume to a single-column A4 PDF that stays readable in print and
 remains machine-parsable (real text, no images) so ATS systems can read it.
 
 ## Prerequisites
@@ -56,13 +56,21 @@ pdftoppm -png -r 105 "resumes/[Name].pdf" /tmp/page   # then read /tmp/page-*.pn
 
 Verify:
 
-- **Page count** — a resume should land on 1-2 pages; a third page holding one stray
-  line is the most common defect.
-- **Bottom whitespace** — the last page should be reasonably full. If a page ends far
-  short, raise `--base` so the content spreads out instead of leaving a gap.
-- **Broken blocks** — a job heading must not sit alone at the bottom of a page.
+- **Page count** — normally aim for 1-2 resume pages. Honor the user's requested
+  page budget, including a separate recommendation page when requested. A stray
+  line on an extra page is a defect, not an intentional appendix.
+- **Readability at actual size** — inspect the body text, contact block, and stack
+  lines at normal reading size, not only a zoomed preview. The converter's minimum
+  font size is a technical limit, not a readability target.
+- **Whitespace across all pages** — compare page density. If substantial unused
+  space accompanies small text, increase `--base` first and rebalance page breaks.
+  Preserve breathing room; do not stretch short sections just to fill a page.
+- **Broken blocks** — keep headings with their following content and short bullets
+  together. Avoid carrying a single line of a sentence onto the next page.
 
-Adjust `--base` (and only if truly needed, `assets/resume.css`) and re-render.
+Adjust `--base`, line height, section spacing, margins, and page breaks as needed,
+then re-render and inspect every page. `--fit-pages` only limits page count; it does
+not enlarge undersized text or balance whitespace automatically.
 
 ## Expected Markdown structure
 
@@ -76,7 +84,7 @@ The script maps the resume conventions used in this repository onto the layout:
 | `### Company \| Title` | Job heading; the following `*Location \| Dates*` line becomes its meta line |
 | `* **Label:** value` under Technical Skills / Languages | Aligned label-value grid |
 | `* *Stack: ...*` | Muted italic footer line under the role |
-| Certifications + Education | Placed side by side in two columns |
+| Certifications + Education | Separate full-width sections in source order |
 | Languages | Collapsed into a single inline line |
 
 A resume that does not follow these conventions still converts — it simply falls back to
@@ -86,14 +94,28 @@ plain headings, paragraphs, and bullets.
 
 `assets/resume.css` holds the whole design: Charter for body text, Avenir Next for
 headings and labels, and a navy accent (`#1a3a52`). Every size is expressed in `em`
-relative to the body font size, so `--base` scales the document as a whole. Edit this
-file to change the look; do not fork the script.
+relative to the body font size, so `--base` scales the document as a whole.
+
+Treat the stylesheet and its default sizes as a starting point, not a fixed layout
+to enforce. Prioritize readable text, clear hierarchy, balanced whitespace, and
+natural page transitions. Follow a user-provided reference when available. Choose
+the largest comfortable body size that fits the requested content and page budget;
+do not preserve small text simply because it is the default. Around 11-12pt is a
+useful starting range when space permits, not a mandatory size.
+
+Use the existing converter rather than forking it. Keep document-specific layout
+adjustments scoped to that output; change the shared stylesheet for reusable design
+improvements or an explicitly requested default change.
+
+Keep Certifications and Education stacked at full width by default, especially when
+the page has room. Do not force a two-column layout to save space.
 
 ## Output Summary
 
 Report to the user in the language of their request:
 
 - The output path and page count.
-- Any layout decision worth knowing (e.g. "shrunk to 9.2pt to keep it on two pages").
+- Any layout decision worth knowing (e.g. "increased body text to 11.2pt and
+  rebalanced page breaks to reduce excess whitespace").
 - Anything that could not be fixed by layout alone (e.g. the resume is too long for the
   requested page count and the content itself needs trimming).
