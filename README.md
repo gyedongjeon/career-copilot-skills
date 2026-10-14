@@ -62,6 +62,13 @@ A rendering skill that turns any markdown resume in this repository into a print
 *   **Output:** A PDF saved next to the source markdown (e.g. `resumes/[Name].pdf`), with the page count and any layout adjustments reported in the chat.
 *   **Requires:** `pandoc`, `weasyprint`, and `beautifulsoup4` (see the skill's `SKILL.md`).
 
+### 7. 👀 Company Watch (`company-watch`)
+A watchlist skill that tracks companies using your main stack (e.g., Berlin startups using Django) and checks their own job feeds instead of job boards.
+
+*   **What it does:** Searches job boards (LinkedIn, StepStone, XING, WeAreDevelopers, Arbeitnow) for your stack to discover hiring companies, builds a list of companies with evidence that they use your stack, records each company's careers page and applicant tracking system (Greenhouse, Lever, Ashby, Personio, JOIN, Workable, SmartRecruiters), and reads their live job feeds to report new matching openings since the last check.
+*   **How to trigger:** Say things like, *"Find Berlin startups that use Django,"* *"Add companies to my watchlist,"* or *"Check my watchlist companies for new jobs."*
+*   **Output:** The watchlist at `results/company-watch/watchlist.md` and check reports saved as `results/company-watch/[YYYY-MM-DD]_openings.md`, with new postings marked `NEW`.
+
 ---
 
 ## 🌍 Language Flexibility
