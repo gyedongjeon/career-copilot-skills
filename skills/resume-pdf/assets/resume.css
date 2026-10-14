@@ -93,11 +93,6 @@ li.stack strong, p.stack strong { font-weight: 400; color: inherit; }
 }
 .grow .v { flex: 1; }
 
-/* ---------- Two-column tail sections ---------- */
-.cols { display: flex; gap: 2.3em; page-break-inside: avoid; }
-.cols .col { flex: 1; }
-.cols h2 { margin-top: 0.8em; }
-
 /* ---------- Inline run (languages) ---------- */
 .inline-run { margin: 0.52em 0 0.21em 0; }
 .inline-run .item { white-space: nowrap; }

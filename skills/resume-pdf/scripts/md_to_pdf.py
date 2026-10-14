@@ -23,8 +23,6 @@ CSS_PATH = Path(__file__).resolve().parent.parent / "assets" / "resume.css"
 GRID_SECTIONS = ("Technical Skills", "Languages")
 # Section rendered as one inline run (kept on a single line when it fits).
 INLINE_SECTION = "Languages"
-# Adjacent short sections placed side by side.
-SIDE_BY_SIDE = ("Certifications", "Education")
 
 
 def run(cmd, **kw):
@@ -147,29 +145,7 @@ def structure(html: str) -> str:
             run_div.append(item)
         grid.replace_with(run_div)
 
-    # 7. Two short adjacent sections share a row.
-    def grab_section(title):
-        for h2 in soup.find_all("h2"):
-            if h2.get_text().strip() == title:
-                nodes, node = [h2], h2.next_sibling
-                while node is not None and getattr(node, "name", None) != "h2":
-                    nxt = node.next_sibling
-                    nodes.append(node)
-                    node = nxt
-                return nodes
-        return None
-
-    left, right = (grab_section(t) for t in SIDE_BY_SIDE)
-    if left and right:
-        cols = tag("div", "cols")
-        left[0].insert_before(cols)
-        for nodes in (left, right):
-            col = tag("div", "col")
-            for node in nodes:
-                col.append(node.extract())
-            cols.append(col)
-
-    # 8. Only leaf items get orphan/widow control; parents must stay breakable.
+    # 7. Keep sections in source order; only leaf items get orphan/widow control.
     for li in soup.find_all("li"):
         if not li.find("ul"):
             cls = li.get("class") or []
