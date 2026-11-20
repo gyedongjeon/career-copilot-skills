@@ -17,7 +17,7 @@ The purpose of a cover letter is to convincingly communicate **"why I am the rig
 - Genuine interest in and motivation for the company must come through. If company research results are available, differentiate by referencing specific business, technology, or culture details.
 - Aim for a specific and personal opening rather than formulaic, generic phrases (e.g., "I am writing to express my interest...").
 - For English cover letters, ask the applicant's preferred English level before writing when it is not already known.
-- If the applicant does not answer, the information is unavailable, or the user asks to proceed without specifying a level, write at a **B1-B2 English level** by default. The letter should sound like something the applicant can naturally explain in an interview.
+- If the applicant does not answer, the information is unavailable, or the user asks to proceed without specifying a level, write in **plain, simple English** by default. The letter should sound like something the applicant can naturally explain in an interview.
 - Prefer short, clear sentences over polished corporate phrasing. Avoid idioms, complex grammar, long clauses, and overly sophisticated vocabulary.
 
 ## Workflow
@@ -34,9 +34,9 @@ The purpose of a cover letter is to convincingly communicate **"why I am the rig
 
 **Applicant English Level:**
 - Before creating an English main draft, final submission copy, or PDF, check whether the applicant's preferred English level is already known from the conversation or available applicant notes.
-- If it is not known, ask the user for the desired English level or whether to use the default B1-B2 level.
-- If the user does not provide an answer, wants to proceed quickly, or no reliable information exists, use B1-B2 by default.
-- Do not use advanced C1-C2 phrasing unless the user explicitly asks for it.
+- If it is not known, ask the user for the desired English level or whether to use the default plain, simple English.
+- If the user does not provide an answer, wants to proceed quickly, or no reliable information exists, use plain, simple English by default.
+- Do not use advanced or literary phrasing unless the user explicitly asks for it.
 
 **Applicant Contact Block:**
 - Before creating the main draft or submission-ready cover letter, confirm the applicant's address and contact details with the user.
@@ -107,7 +107,7 @@ Use the structure below as a baseline, adjusting flexibly based on content:
 
 **English Level & Readability:**
 - For English postings, use the applicant-confirmed English level when provided.
-- If no English level is confirmed, keep the English at **B1-B2 level** by default.
+- If no English level is confirmed, keep the English **plain and simple** by default.
 - Use simple sentence structures: usually one idea per sentence.
 - Keep most sentences under 20 words.
 - Use common verbs such as "built", "led", "improved", "worked with", "helped", "designed", and "supported".
@@ -150,7 +150,7 @@ Save the cover letter as a markdown file with a frontmatter section.
   - Bold only the applicant name and company name in the address blocks. Keep the rest of the address/contact lines plain.
   - Avoid tables, footnotes, comments, and long headings.
   - Keep the letter compact enough for one page.
-  - Use the applicant-confirmed English level when available; otherwise use the default B1-B2 readability rules.
+  - Use the applicant-confirmed English level when available; otherwise use the default plain-English readability rules.
 - Always attempt to create a PDF version from the English submission copy.
 - **PDF Save Path**: `results/cover-letter/[YYYY-MM-DD]_[Applicant_Name]_[Company_Name]_cover_letter_submission_en.pdf`
 - If PDF conversion fails because no local converter is available, say so in the final response and provide the English submission markdown path.
@@ -331,5 +331,5 @@ After the cover letter, output a brief **Writing Notes** section separately in t
 - **Company-specific**: Never leave the company name or position title as a placeholder like `[Company Name]`. Always fill them in specifically.
 - **Keep it brief**: Recruiters are busy. Never exceed 250 words. Write short, punchy paragraphs rather than dense blocks of text.
 - **Tone**: Professional yet genuine. Avoid both overly formal ("I humbly submit") and overly casual tones.
-- **Interview consistency**: The English should match the applicant-confirmed level. If no level is confirmed, default to realistic B1-B2 English. Do not make the applicant sound more fluent, literary, or corporate than they can likely sustain in interviews.
+- **Interview consistency**: The English should match the applicant-confirmed level. If no level is confirmed, default to plain, simple English. Do not make the applicant sound more fluent, literary, or corporate than they can likely sustain in interviews.
 - **Submission-ready output**: Always create an English-only submission markdown file and always attempt PDF conversion. Never include Korean translation or writing notes in the submission copy or PDF.

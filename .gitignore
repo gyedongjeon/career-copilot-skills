@@ -145,6 +145,8 @@ cython_debug/
 *.sqlite
 *.db
 results/
+records/
+playground/
 resumes/
 tmp/
 temp/
