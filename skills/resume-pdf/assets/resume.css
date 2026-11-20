@@ -84,7 +84,7 @@ li.stack strong, p.stack strong { font-weight: 400; color: inherit; }
 
 /* ---------- Label/value grid (skills) ---------- */
 .grid { margin: 0.52em 0 0.31em 0; }
-.grow { display: flex; margin: 0.29em 0; page-break-inside: avoid; }
+.grow { display: flex; gap: 0.7em; margin: 0.29em 0; page-break-inside: avoid; }
 .grow .k {
   flex: 0 0 11.3em;
   font-family: "Avenir Next", "Helvetica Neue", Helvetica, sans-serif;
@@ -92,6 +92,18 @@ li.stack strong, p.stack strong { font-weight: 400; color: inherit; }
   letter-spacing: 0.02em; padding-top: 0.1em;
 }
 .grow .v { flex: 1; }
+
+/* ---------- Recommendation quotes ---------- */
+blockquote {
+  margin: 0.5em 0 0.78em 0;
+  padding-left: 0.85em;
+  border-left: 0.16em solid #c9d3da;
+  color: #30404a;
+  font-size: 1.08em;
+  line-height: 1.42;
+}
+blockquote p { margin: 0 0 0.3em 0; }
+.rec-intro { color: #5a6b76; font-size: 1.0em; margin: 0.3em 0 0.9em 0; }
 
 /* ---------- Inline run (languages) ---------- */
 .inline-run { margin: 0.52em 0 0.21em 0; }

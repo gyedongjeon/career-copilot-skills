@@ -95,7 +95,7 @@ Maintain the original resume's structure as a baseline while applying the follow
 - Maintain unrelated items but adjust their order if necessary.
 
 **English Level & Readability:**
-- For English resumes, use the applicant-confirmed English level when provided; otherwise, default to realistic **B1-B2 level**.
+- For English resumes, use the applicant-confirmed English level when provided; otherwise, default to **plain, simple English**.
 - Use simple, active sentence structures: usually one clear idea per sentence.
 - Use common verbs such as "built", "led", "improved", "worked with", "designed", and "supported".
 - Avoid overly advanced, flowery, or literary phrasing that the applicant cannot sustain in interviews.
@@ -129,150 +129,50 @@ Create two Markdown files: one working draft for internal review metadata and on
 - If the job posting is not in English, create the final output in the posting language and adjust the suffix accordingly (e.g., `_output_de.md`). If an English copy is also requested or useful for PDF submission, create an additional `_output_en.md` file.
 
 **PDF Output**
-- Always attempt to create a PDF version from the final resume output file.
+- Always attempt to create a PDF version from the final resume output file, using the **`resume-pdf` skill** (see Section 6). That skill owns the resume PDF layout and styling.
 - **PDF Save Path**: `results/resume-tailor/[YYYY-MM-DD]_[Applicant_Name]_[Company_Name]_tailored_resume_output_en.pdf`
 - Match the PDF suffix to the final resume output language (e.g., `_output_de.pdf` for a German output file).
-- If PDF conversion fails because no local converter is available, say so in the final response and provide the final resume output Markdown path.
-- Do not keep intermediate HTML or CSS files in `results/resume-tailor/` after the PDF is created. Temporary HTML/CSS files may be used during conversion, but delete them before finishing unless the user explicitly asks to keep them.
+- If PDF conversion fails because the `resume-pdf` tools are unavailable, say so in the final response and provide the final resume output Markdown path.
+- The `resume-pdf` converter uses temporary files internally; do not leave stray `.html`/`.css` artifacts in `results/resume-tailor/`.
 - Final saved artifacts should normally be only:
   - the working draft Markdown
   - the final resume output Markdown
   - the final resume output PDF
 
-### 6. PDF Conversion Workflow
+### 6. PDF Conversion (via the `resume-pdf` skill)
 
-After creating the final resume output Markdown file, create a PDF using the first available method below.
+Do not hand-roll a pandoc/weasyprint pipeline or embed CSS here. The **`resume-pdf` skill** owns the resume PDF layout and styling (single-column, ATS-friendly A4, Charter body / Avenir Next headings, navy accent). Use it for every resume PDF so the resume, cover letter, and any references page look like one set.
 
-**Preferred conversion order:**
-1. `pandoc` with a PDF engine if available.
-2. `weasyprint` if available.
-3. Headless browser print-to-PDF if available.
-4. Any existing project script or local converter that already supports Markdown or HTML to PDF.
+**How to run it:**
+- Invoke the `resume-pdf` skill, or call its converter directly on the **final resume output Markdown** (the `_output_*.md` file, which has no frontmatter):
 
-**Installing a converter when missing:**
-- If no PDF converter is available, try to install one only after user approval (e.g., on macOS, `brew install pandoc` if Homebrew is available).
-- Do not silently install packages or download dependencies without the user's approval.
-- After installation, rerun the PDF conversion and validation steps.
+  ```bash
+  python3 skills/resume-pdf/scripts/md_to_pdf.py \
+    "results/resume-tailor/[YYYY-MM-DD]_[Applicant_Name]_[Company_Name]_tailored_resume_output_en.md" \
+    -o "results/resume-tailor/[YYYY-MM-DD]_[Applicant_Name]_[Company_Name]_tailored_resume_output_en.pdf" \
+    --fit-pages 2
+  ```
 
-**PDF validation:**
-- Confirm that the PDF file exists and is non-empty.
-- If possible, check the page count and confirm that it fits the intended page budget.
-- If the PDF exceeds the page budget, tighten content or styling and regenerate it.
-- If the PDF cannot be created, keep the final resume output Markdown file and clearly report the conversion issue.
-- After successful PDF validation, remove any generated `.html` or `.css` conversion files unless the user explicitly requested them.
+- Always pass `-o` with the PDF Save Path from Section 5; otherwise the PDF is written next to the input.
+- `--fit-pages 2` keeps it to 2 pages. After it fits, try a larger `--base` (body font pt) and keep the largest value that still fits the page budget, rather than leaving text needlessly small.
 
-### 7. Resume PDF Layout & Styling Rules
+**Make the final output Markdown match `resume-pdf` conventions** so it renders fully (see that skill's "Expected Markdown structure"):
+- Technical Skills / Languages rows use a bold label: `* **Backend & Frameworks:** value` (a non-bold `* Label: value` line is dropped from the skills grid).
+- Job headings are `### Company | Location | Role | Dates`; the `Stack:` line renders as a muted footer under the role.
 
-The PDF should follow the embedded style profile below. The skill must not depend on any external or local files for visual styling.
+**Verify before reporting (required):** render the pages and look at them — do not assume the layout is fine.
 
-**Resume design profile:**
-- A4, exactly 2 pages when the resume has 10+ years of experience.
-- Large serif applicant name at the top left.
-- Gray serif subtitle below the name.
-- Compact two-line contact block below the subtitle; small icons are acceptable in the PDF/HTML output when available.
-- No colored sidebars, cards, tables, full-width header blocks, decorative borders, or background colors.
-- Section titles are uppercase, serif, underlined text. Do not use horizontal divider rules between sections.
-- Body text is serif, black, left-aligned, and compact.
-- Experience entries use one inline heading line: `Company | Location | Role | Dates`.
-- Bullets are flat one-level bullets. Avoid nested bullets in the final PDF.
-- Stack lines are normal bullets or short plain lines, not separate sub-sections.
-- Do not add a location/date line or signature block to a resume/CV. These belong in a cover letter, not in the resume.
-
-**Page and spacing constraints:**
-- Default to a 2-page A4 PDF unless the user explicitly asks for 1 page.
-- Use approximately 18-22mm top/bottom margins and 18-20mm left/right margins.
-- Keep body text around 11-12pt with line-height around 1.25-1.35.
-- Keep section spacing moderate: enough white space to scan, but not so much that bullets spill to a third page.
-- Avoid orphan section headings or one-line spillover onto a new page. If this happens, tighten spacing or shorten less relevant bullets.
-
-**Typography and structure:**
-- Prefer a serif font family similar to the reference: `"Times New Roman", Times, Georgia, serif`.
-- Use a sans-serif fallback only if serif rendering is unavailable.
-- Applicant name: 28-32pt, normal weight, black.
-- Subtitle: 18-21pt, normal weight, medium gray (`#666`).
-- Section headings: 15-17pt, uppercase, normal weight, text underline.
-- Experience heading lines: 12-13pt, sans-serif or clean serif, slightly emphasized but not oversized.
-- Body bullets: 11-12pt serif, simple bullet marker, minimal indentation.
-
-**HTML/CSS conversion requirement:**
-- When converting to PDF, prefer generating a temporary intermediate HTML file from the final resume output and applying CSS that matches the resume design profile.
-- Hide or avoid Markdown `<hr>` elements in the PDF output because the reference uses underlined headings rather than horizontal rules.
-- If Markdown conversion creates nested lists, flatten them before PDF generation.
-- Treat generated HTML/CSS as disposable conversion artifacts, not final deliverables.
-
-**Suggested CSS for the reference-like PDF:**
-```css
-@page {
-  size: A4;
-  margin: 19mm 19mm 18mm;
-}
-
-body {
-  color: #000;
-  font-family: "Times New Roman", Times, Georgia, serif;
-  font-size: 11.5pt;
-  line-height: 1.3;
-}
-
-h1 {
-  font-size: 30pt;
-  font-weight: 400;
-  line-height: 1.1;
-  margin: 0 0 10px;
-}
-
-.subtitle {
-  color: #666;
-  font-size: 20pt;
-  margin: 0 0 34px;
-}
-
-.contact {
-  font-size: 11.5pt;
-  line-height: 1.55;
-  margin-bottom: 26px;
-}
-
-h2 {
-  border: 0;
-  font-size: 16pt;
-  font-weight: 400;
-  margin: 24px 0 7px;
-  padding: 0;
-  text-decoration: underline;
-  text-transform: uppercase;
-}
-
-h3 {
-  font-family: Arial, Helvetica, sans-serif;
-  font-size: 12.3pt;
-  font-weight: 400;
-  margin: 18px 0 4px;
-}
-
-p {
-  margin: 0 0 7px;
-}
-
-ul {
-  margin: 0 0 12px;
-  padding-left: 0;
-  list-style-position: inside;
-}
-
-li {
-  margin: 0 0 4px;
-}
-
-hr {
-  display: none;
-}
-
-a {
-  color: #0645ad;
-}
-
+```bash
+pdftoppm -png -r 110 "results/resume-tailor/..._output_en.pdf" /tmp/resume_page   # then read /tmp/resume_page-*.png
 ```
+
+- Confirm the page count matches the budget and no section is empty or broken across a page.
+- Confirm Technical Skills actually rendered (the most common failure when labels are not bold).
+- If a layout issue is reusable (affects any resume), fix it in `skills/resume-pdf/assets/resume.css`; keep one-off tweaks scoped to the run.
+
+**If the `resume-pdf` tools are unavailable:**
+- The converter needs `pandoc` and `weasyprint` (see the `resume-pdf` skill's Prerequisites). Install only after user approval.
+- If it still cannot run, keep the final resume output Markdown file and clearly report the issue with its path.
 
 ## Working Draft Template
 
@@ -299,11 +199,11 @@ LinkedIn: [Applicant LinkedIn] | Website: [Applicant Website]
 
 ## Technical Skills
 
-* Backend & Frameworks: [Backend languages/frameworks]
-* Frontend & Web: [Frontend/web skills if relevant]
-* Database & Data Modeling: [Database list]
-* Cloud & Infrastructure: [DevOps/Cloud details]
-* Methodologies: [Methodologies/soft skills]
+* **Backend & Frameworks:** [Backend languages/frameworks]
+* **Frontend & Web:** [Frontend/web skills if relevant]
+* **Database & Data Modeling:** [Database list]
+* **Cloud & Infrastructure:** [DevOps/Cloud details]
+* **Methodologies:** [Methodologies/soft skills]
 
 ## Professional Experience
 
@@ -341,11 +241,11 @@ LinkedIn: [Applicant LinkedIn] | Website: [Applicant Website]
 
 ## Technical Skills
 
-* Backend & Frameworks: [Backend languages/frameworks]
-* Frontend & Web: [Frontend/web skills if relevant]
-* Database & Data Modeling: [Database list]
-* Cloud & Infrastructure: [DevOps/Cloud details]
-* Methodologies: [Methodologies/soft skills]
+* **Backend & Frameworks:** [Backend languages/frameworks]
+* **Frontend & Web:** [Frontend/web skills if relevant]
+* **Database & Data Modeling:** [Database list]
+* **Cloud & Infrastructure:** [DevOps/Cloud details]
+* **Methodologies:** [Methodologies/soft skills]
 
 ## Professional Experience
 
